@@ -41,6 +41,7 @@ public class Main {
         double theVariance    = INVALID;
         double theStDeviation = INVALID;
         String uIString;
+        int uIInt;
 
         // --------------------------------
         // Create the Object to perform standard deviation calculations
@@ -71,9 +72,14 @@ public class Main {
         // --------------------------------
         // create a variable userFileName of type scanner to process input from "System.in"
         //
-
+        System.out.println("*======================================================*");
+        System.out.println("|This program will do standard deviation in all of its |");
+        System.out.println("|forms such as discrete, discrete frequency and grouped|");
+        System.out.println("|you must choose the file your data will come from and |");
+        System.out.println("|the type of standard deviation you would like to use. |");
+        System.out.println("*======================================================*");
         String userInputFileName;
-        System.out.println("\nPlease type in the INPUT file name\n");
+        System.out.print("\nPlease type in the INPUT file name:");
 
         // --------------------------------
         // Here we are using another class defined in Java, the Scanner class, to
@@ -87,16 +93,29 @@ public class Main {
         Scanner scanSystemIn = new Scanner(System.in, "UTF-8");
 
         // Use the Scanner "userFileName" to get the "next" input from "System.in"
-        userInputFileName = scanSystemIn.next();
-
-
+        userInputFileName = scanSystemIn.next()+".txt";
+        System.out.println("*======================================================*");
+        System.out.println("| 1: Is Standard deviation with discrete values        |");
+        System.out.println("| 2: Is Standard deviation with a frequency table      |");
+        System.out.println("| 3: Is Standard deviation with discrete values        |");
+        System.out.println("|                      CHOOSE                          |");
+        System.out.println("*======================================================*");
+        System.out.print("Please enter your choice: ");
+        uIString=scanSystemIn.next();
+        uIInt = Integer.parseInt(uIString);
+        CalcSD.setCalcMethod(uIInt);
         // ---------------------------------------------
         // This is where we "try" to process the file
         //
 
         try {
-            uIString = scanSystemIn.next();
-            
+
+
+
+
+
+
+
 
 
             // --------------------------------
@@ -217,13 +236,7 @@ public class Main {
             e.printStackTrace();
         }
 
+
     } // end of main method
-    boolean tryParseInt(String value) {
-        try {
-            Integer.parseInt(value);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
+
 } // end of class

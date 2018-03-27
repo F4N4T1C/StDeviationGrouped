@@ -61,11 +61,10 @@ public class StDeviation {
                 calcMethod = how2calculate;
                 break;
             }
-            // Grouped Method not part of current assignment
-            //case GROUPED:{
-            //    calcMethod = how2calculate;
-            //    break;
-            //}
+            case GROUPED:{
+                calcMethod = how2calculate;
+                break;
+            }
             default:{
                 calcMethod = INVALID_CALC_METHOD;
                 System.out.println("ERROR: Standard Deviation Calculation Method either UNIMPLEMENTED, or UNKNOWN");
@@ -186,11 +185,11 @@ public class StDeviation {
                 break;
             }
             // ---------------------------------------------
-            // Grouped Method not part of current assignment
-            //case GROUPED:{
-            //    ...
-            //    break;
-            //}
+            //Grouped Method not part of current assignment
+            case GROUPED:{
+                ...
+                break;
+            }
 
             default:{
                 calcMethod = INVALID_CALC_METHOD;
@@ -320,7 +319,48 @@ public class StDeviation {
 
             case FRQTABLE: {
 
-                break;
+                double variance = 0;
+                int frequency;
+                int currentNum;
+                boolean seenBefore = false;
+                for(int o = 0; o< itemCounter;o++){// to prevent 0's from being read as variables that have been read
+                    nVariables[o] = INVALID;
+                }
+                for (int y = 0; y < itemCounter; y++) {
+                    currentNum = Data[y];
+                    frequency = 0;
+                    for (int z = 0; z < itemCounter; z++) {
+                        seenBefore = false;
+                        if (currentNum == nVariables[z]) {
+                            seenBefore = true;
+                            break;
+                        }
+                    }
+                    for (int imRunningOutOfLetters = 0; imRunningOutOfLetters < itemCounter; imRunningOutOfLetters++) {
+
+                        if (!seenBefore && currentNum == Data[imRunningOutOfLetters]) {
+                            frequency++;
+                            System.out.println(currentNum);
+                            System.out.println(frequency);
+
+                        }
+                        nVariables[y] = currentNum;
+                    }
+
+                    fVariance[y] = ((Data[y] - calcAverage()) * (Data[y] - calcAverage()))*frequency;
+                    variance += fVariance[y];
+                    System.out.println(variance);
+                }
+                //4,5,6,3,2,8,7,9,1
+                //123456789
+
+
+                variance = variance/itemCounter;
+
+                //System.out.println(variance);
+
+                return variance;
+
             }
 
             case GROUPED:{
