@@ -103,21 +103,22 @@ public class Main {
         System.out.print("Please enter your choice: ");
         uIString=scanSystemIn.next();
         uIInt = Integer.parseInt(uIString);
+        if(uIInt == 2){
+            System.out.println("*======================================================*");
+            System.out.println("| Frequency requires you to enter a Min and a Max for  |");
+            System.out.println("|                 the data values                      |");
+            System.out.println("*======================================================*");
+            System.out.print("Please Enter min now: ");
+            CalcSD.setMin(scanSystemIn.nextInt());
+            System.out.print("Please Enter max now: ");
+            CalcSD.setMax(scanSystemIn.nextInt());
+        }
         CalcSD.setCalcMethod(uIInt);
         // ---------------------------------------------
         // This is where we "try" to process the file
         //
 
         try {
-
-
-
-
-
-
-
-
-
             // --------------------------------
             // create file, and scanner objects
             // - file object is called tempfilenums.txt and is in your project directory

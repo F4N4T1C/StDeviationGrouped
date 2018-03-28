@@ -38,6 +38,8 @@ public class StDeviation {
     private double sdVar      = INVALID;
     private double sdDev      = INVALID;
     private int nOfGroups     = INVALID;
+    private int nVariables[]  = new int[MAXDATA];
+    private double fVariance[]= new double[MAXDATA];
 
     // ******************************************************************************
     // ******************************************************************************
@@ -187,7 +189,7 @@ public class StDeviation {
             // ---------------------------------------------
             //Grouped Method not part of current assignment
             case GROUPED:{
-                ...
+
                 break;
             }
 
@@ -248,6 +250,7 @@ public class StDeviation {
                 break;
             }
             case FRQTABLE: {
+
                 break;
             }
 
@@ -323,20 +326,20 @@ public class StDeviation {
                 int frequency;
                 int currentNum;
                 boolean seenBefore = false;
-                for(int o = 0; o< itemCounter;o++){// to prevent 0's from being read as variables that have been read
+                for(int o = 0; o< sdItems;o++){// to prevent 0's from being read as variables that have been read
                     nVariables[o] = INVALID;
                 }
-                for (int y = 0; y < itemCounter; y++) {
+                for (int y = 0; y < sdItems; y++) {
                     currentNum = Data[y];
                     frequency = 0;
-                    for (int z = 0; z < itemCounter; z++) {
+                    for (int z = 0; z < sdItems; z++) {
                         seenBefore = false;
                         if (currentNum == nVariables[z]) {
                             seenBefore = true;
                             break;
                         }
                     }
-                    for (int imRunningOutOfLetters = 0; imRunningOutOfLetters < itemCounter; imRunningOutOfLetters++) {
+                    for (int imRunningOutOfLetters = 0; imRunningOutOfLetters < sdItems; imRunningOutOfLetters++) {
 
                         if (!seenBefore && currentNum == Data[imRunningOutOfLetters]) {
                             frequency++;
@@ -355,7 +358,7 @@ public class StDeviation {
                 //123456789
 
 
-                variance = variance/itemCounter;
+                variance = variance/sdItems;
 
                 //System.out.println(variance);
 
