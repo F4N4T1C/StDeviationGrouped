@@ -38,7 +38,6 @@ public class Main {
         int     howManyDataItems  = INVALID;
         int     methodSelection   = INVALID;
         int     rangeValue        = INVALID;
-        int     howManyGroups     = INVALID;
 
         double  theAverage        = INVALID;
         double  theVariance       = INVALID;
@@ -101,12 +100,14 @@ public class Main {
                     case 3:{ // Grouped Values
                         CalcSD.setCalcMethod(GROUPED);
                         methodSelected = true;
-                        System.out.println("Enter the number of groups:");
-                        CalcSD.setNumberOfGroups(scanSystemIn.nextInt());
+
                         System.out.println("Enter the Minimum value   :");
                         CalcSD.setMin(scanSystemIn.nextInt());
                         System.out.println("Enter the Maximum value   :");
                         CalcSD.setMax(scanSystemIn.nextInt());
+                        System.out.println("Enter the number of groups:");
+                        CalcSD.setNumberOfGroups(scanSystemIn.nextInt());
+                        rangeSet = true;
 
                         break;
                     }
@@ -168,8 +169,8 @@ public class Main {
                         }
 
                         case GROUPED: {
-                            System.out.println("WARNING: Grouped Calculation Method not implemented");
-                            dataError = true;
+
+                            CalcSD.addNewDataItem(scanUserFile.nextInt());
                             break;
                         }
 
